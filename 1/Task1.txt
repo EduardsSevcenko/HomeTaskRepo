@@ -1,0 +1,14 @@
+/* 1) Какие у вас ожидания от курса? Есть ли конкретные вопросы по теме Базы данных?*/
+
+1)Nau4itsa ispolzovatj python dlja analiza dannih. Pisatj sql queries dlja neobhodimoi informacii.
+Umetj ispozlovatj raznih biblioteki v python dlja data scientist. Nau4itsa rabotatj s iskustvennim intelektom dlja forecasting.
+Matemati4eskie, stati4eskie zadanie v python. ETL dannih. Web scrapping itd.
+
+/* 2) В какой сфере работаете сейчас?*/
+
+2)Fitness industrija, perehozhu v IT. Obu4ajusj na raznie kursi. Znanie vsego po nemnozhku.
+
+/* 3) Если в IT, то какой у вас опыт (инструменты, технологии, языки программирования)?*/
+
+3)Opita netu, no umeju rabotatj s Power BI, nemnozhko Python, SQL, proboval Tableau, Qlik view,
+Qlik sense, Rapidminer. V excel delal raznie modelirovanija, optimizacii, power pivot itd.
