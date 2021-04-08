@@ -1,0 +1,102 @@
+CREATE TABLE users (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY , 
+	first_name VARCHAR(100) NOT NULL ,
+    last_name VARCHAR(100) NOT NULL ,
+    email VARCHAR(100) NOT NULL UNIQUE ,
+    phone VARCHAR(100) NOT NULL UNIQUE ,
+    data_of_birth DATETIME ,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE profiles (
+  user_id INT UNSIGNED NOT NULL PRIMARY KEY , 
+  gender CHAR(1) NOT NULL ,
+  birthday DATE ,
+  city VARCHAR(130) ,
+  country VARCHAR(130) ,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+) ; 
+
+CREATE TABLE friendship (
+  user_id INT UNSIGNED NOT NULL ,
+  friend_id INT UNSIGNED NOT NULL ,
+  friendship_status_id INT UNSIGNED NOT NULL ,
+  requested_at DATETIME DEFAULT NOW() ,
+  confirmed_at DATETIME ,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,  
+  PRIMARY KEY (user_id, friend_id) 
+) ;
+
+CREATE TABLE friendship_statuses (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(150) NOT NULL UNIQUE ,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+) ;
+
+CREATE TABLE messages (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+    from_user_id INT UNSIGNED NOT NULL,
+    to_user_id INT UNSIGNED NOT NULL,
+    body TEXT NOT NULL,
+    status_id INT UNSIGNED NOT NULL,
+    created_at DATETIME DEFAULT NOW() ,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+    is_important BOOLEAN,
+    media_id INT UNSIGNED
+);
+
+CREATE TABLE message_statues (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  
+) ;
+
+CREATE TABLE communities (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+);  
+
+CREATE TABLE communities_users (
+  user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  community_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+  PRIMARY KEY (user_id, community_id)
+);  
+
+CREATE TABLE media (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  media_type_id INT UNSIGNED NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+  filename VARCHAR(255)  NOT NULL UNIQUE,
+  size INT NOT NULL
+) ;
+
+CREATE TABLE media_types (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+) ;
+
+CREATE TABLE entity_types (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,  
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+) ;
+
+INSERT INTO `media_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'photo', current_timestamp(), current_timestamp());
+INSERT INTO `media_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (2, 'audio', current_timestamp(), current_timestamp());
+INSERT INTO `media_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (3, 'gif', current_timestamp(), current_timestamp());
+INSERT INTO `media_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (4, 'video', current_timestamp(), current_timestamp());
+INSERT INTO `media_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (5, 'file', current_timestamp(), current_timestamp());
