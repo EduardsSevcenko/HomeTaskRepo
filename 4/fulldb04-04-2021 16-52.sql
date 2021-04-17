@@ -967,4 +967,28 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone`, `data_of
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone`, `data_of_birth`, `created_at`, `updated_at`) VALUES (99, 'Laisha', 'Oberbrunner', 'jspinka@example.net', '1-410-349-6875x67979', '1977-01-22 22:47:39', '2007-12-04 18:39:45', '1975-02-22 18:08:58');
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone`, `data_of_birth`, `created_at`, `updated_at`) VALUES (100, 'Casandra', 'Blick', 'roberts.myrtice@example.com', '819-179-9280x4081', '1989-11-20 13:31:55', '1971-12-30 07:03:55', '1982-12-29 18:47:11');
 
+use vk;
+DROP TABLE IF EXISTS `communities_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `communities_users` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `community_id` int(10) unsigned NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`user_id`,`community_id`),
+  UNIQUE KEY `community_id` (`community_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `communities_users`
+--
+
+LOCK TABLES `communities_users` WRITE;
+/*!40000 ALTER TABLE `communities_users` DISABLE KEYS */;
+INSERT INTO `communities_users` VALUES (101,1,'1993-04-24 03:43:33','2004-04-13 12:12:37'),(102,7,'2002-06-13 01:37:59','2005-07-23 09:09:06'),(103,3,'2018-01-25 04:43:07','1999-01-04 17:46:07'),(105,5,'1971-01-29 11:19:06','2001-06-10 00:57:07'),(108,9,'2004-09-03 07:08:57','1991-06-05 07:12:28'),(109,0,'1970-03-31 06:48:21','2001-07-19 05:49:31'),(110,6,'1997-04-12 09:43:11','1971-07-10 11:09:09'),(111,2,'1986-03-25 07:12:12','2020-12-25 22:06:02'),(115,8,'1980-01-19 23:39:21','1981-10-08 05:48:39'),(121,4,'1971-03-27 15:53:22','2009-11-29 19:14:46');
+/*!40000 ALTER TABLE `communities_users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
