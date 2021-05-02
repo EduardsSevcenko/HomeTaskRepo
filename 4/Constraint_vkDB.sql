@@ -1,4 +1,4 @@
-use vk_lesson;
+use vk;
 ALTER TABLE likes_media ADD CONSTRAINT fk_likes_media_1 FOREIGN KEY (media_id) REFERENCES media(id);
 ALTER TABLE likes_media ADD CONSTRAINT fk_likes_media_2 FOREIGN KEY (from_user_id) REFERENCES users(id);
 
@@ -10,7 +10,7 @@ ALTER TABLE likes_profile ADD CONSTRAINT fk_likes_profile_2 FOREIGN KEY (from_us
 ALTER TABLE likes_post ADD CONSTRAINT fk_likes_post_1 FOREIGN KEY (post_id) REFERENCES posts(id);
 ALTER TABLE likes_post ADD CONSTRAINT fk_likes_post_2 FOREIGN KEY (from_user_id) REFERENCES users(id);
 
-ALTER TABLE users ADD CONSTRAINT `phone_check` CHECK (REGEXP_LIKE(phone, '[0-9]{11}'));
+-- ALTER TABLE users ADD CONSTRAINT `phone_check` CHECK (REGEXP_LIKE(phone, '[0-9]{11}'));
 
 ALTER TABLE profiles ADD CONSTRAINT fk_profiles_users FOREIGN KEY (user_id) REFERENCES users (id);
 
